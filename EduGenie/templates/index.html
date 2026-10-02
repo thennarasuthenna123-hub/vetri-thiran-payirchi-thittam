@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduGenie - AI learning assistant</title>
+  <meta name="description" content="Ask questions, get simple explanations, summaries, quizzes and learning paths powered by Google Gemini.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2a41'/%3E%3Cpath d='M14 40 32 18l18 22' fill='none' stroke='%23ffd84d' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to the workspace</a>
+
+  <header class="masthead">
+    <h1 class="wordmark"><span class="mark">EduGenie</span></h1>
+    <p class="tagline">Your study desk for questions, explanations, summaries, quizzes and learning plans.</p>
+  </header>
+
+  <div id="setup-notice" class="notice" role="alert" hidden></div>
+
+  <main class="layout">
+    <form id="task-form" class="rail" aria-label="EduGenie tools">
+      <fieldset class="tasks">
+        <legend>What do you need?</legend>
+
+        <label class="task">
+          <input type="radio" name="task" value="qa" checked>
+          <span class="task-name">Ask a question</span>
+          <span class="task-hint">Quick, accurate answers</span>
+        </label>
+        <label class="task">
+          <input type="radio" name="task" value="explain">
+          <span class="task-name">Explain a concept</span>
+          <span class="task-hint">Plain-language breakdown</span>
+        </label>
+        <label class="task">
+          <input type="radio" name="task" value="summarize">
+          <span class="task-name">Summarize text</span>
+          <span class="task-hint">Shrink a long passage</span>
+        </label>
+        <label class="task">
+          <input type="radio" name="task" value="quiz">
+          <span class="task-name">Take a quiz</span>
+          <span class="task-hint">3 questions on any topic</span>
+        </label>
+        <label class="task">
+          <input type="radio" name="task" value="path">
+          <span class="task-name">Plan my learning</span>
+          <span class="task-hint">Beginner to advanced path</span>
+        </label>
+      </fieldset>
+    </form>
+
+    <section id="workspace" class="workspace" aria-labelledby="task-title">
+      <h2 id="task-title" class="task-title">Ask a question</h2>
+      <p id="task-help" class="task-help"></p>
+
+      <form id="input-form" novalidate>
+        <label for="user-input" class="sr-only">Your input</label>
+        <textarea id="user-input" rows="4" required></textarea>
+        <div class="actions">
+          <button id="submit-btn" type="submit" class="btn-primary">Get answer</button>
+          <span id="char-count" class="char-count" aria-hidden="true"></span>
+        </div>
+      </form>
+
+      <div id="result" class="result" role="region" aria-live="polite" aria-busy="false" aria-label="Result" hidden></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>EduGenie uses AI and can make mistakes. Check important facts against a trusted source.</p>
+  </footer>
+
+  <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>

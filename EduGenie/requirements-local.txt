@@ -1,0 +1,6 @@
+# OPTIONAL: run the LaMini-Flan-T5-783M explanation model locally (~3 GB download on first use).
+# Install on top of requirements.txt:  pip install -r requirements-local.txt
+torch>=2.2.0
+transformers>=4.40.0
+sentencepiece>=0.2.0
+protobuf>=4.25.0
